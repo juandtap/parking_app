@@ -25,7 +25,7 @@ public class Tarifa {
 	
 	
 	public Tarifa() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	
@@ -60,12 +60,12 @@ public class Tarifa {
 	}
 
 
-	public float getPrecio() {
+	public float getPrecioHora() {
 		return precioHora;
 	}
 
 
-	public void setPrecio(float precioHora) {
+	public void setPrecioHora(float precioHora) {
 		this.precioHora = precioHora;
 	}
 
