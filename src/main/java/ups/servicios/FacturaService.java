@@ -18,7 +18,7 @@ public class FacturaService {
 	
 	
 	@GET
-	@Path("vehiculos")
+	@Path("facturas")
 	@Produces("application/json")
 	public List<Factura> getAll() throws Exception{
 		return this.gestionFactura.getAll();

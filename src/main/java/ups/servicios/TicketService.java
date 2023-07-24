@@ -19,7 +19,7 @@ public class TicketService {
 	
 	
 	@GET
-	@Path("vehiculos")
+	@Path("tickets")
 	@Produces("application/json")
 	public List<Ticket> getAll() throws Exception{
 		return this.gestionTicket.getAll();
