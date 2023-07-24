@@ -1,9 +1,13 @@
 package ups.negocio;
 
+import java.util.List;
+
+
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import ups.datos.FacturaDAO;
 import ups.modelo.Factura;
+
 
 @Stateless
 public class GestionFactura {
@@ -29,6 +33,19 @@ public class GestionFactura {
 		}
 		
 		
+		
+		
+		
+	}
+	
+	public List<Factura> getAll()  throws Exception{
+		
+		try {
+			return facturaDAO.getAll();
+		} catch (Exception e) {
+			throw new Exception("Error al recuperar Tarifas de la base de datos: "+e.getMessage());
+			
+		}
 		
 		
 		
