@@ -18,15 +18,25 @@ public class GestionTarifa {
 			throw new Exception("Tipo de tarifa vacio !");
 		} else {
 			System.out.println("Se crea nueva tarifa.");
+			try {
+				this.tarifaDAO.create(tarifa);
+			} catch (Exception e) {
+				throw new Exception("Error al crear tarifa: "+e.getMessage());
+			}
 			
-			this.tarifaDAO.create(tarifa);
 			
 		}
 	}
 	
 	public List<Tarifa> getAll()  throws Exception{
 		
-		return tarifaDAO.getAll();
+		try {
+			return tarifaDAO.getAll();
+		} catch (Exception e) {
+			throw new Exception("Error al recuperar tarifas: "+e.getMessage());
+		}
+		
+		
 		
 
 	}
@@ -34,14 +44,23 @@ public class GestionTarifa {
 	public void update(Tarifa tarifa) throws Exception{
 		
 		System.out.println("Se actualiza la tarifa.");
-		this.tarifaDAO.update(tarifa);
+		try {
+			this.tarifaDAO.update(tarifa);
+		} catch (Exception e) {
+			throw new Exception("Error al actualizar tarifa: "+e.getMessage());
+		}
+		
 		
 		
 	}
 	
 	public Tarifa findById(int id) throws Exception{
+		try {
+			return this.tarifaDAO.getById(id);
+		} catch (Exception e) {
+			throw new Exception("Error al encontrar tarifa: "+id+", "+e.getMessage());
+		}
 		
-		return this.tarifaDAO.getById(id);
 		
 	}
 }

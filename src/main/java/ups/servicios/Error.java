@@ -4,6 +4,7 @@ public class Error {
 	
 	/*
 	 * Códigos de error
+	 * 90.Error objeto no encontrado
 	 * 91.Error al hacer POST
 	 * 92.Error al hacer PUT
 	 * 93.Error al hacer GET
