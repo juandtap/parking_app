@@ -22,13 +22,18 @@ public class VehiculoService {
 	@Path("vehiculos")
 	@Produces("application/json")
 	public List<Vehiculo> getAll() throws Exception{
-		return this.gestionVehiculo.getAll();
+		try {
+			return this.gestionVehiculo.getAll();
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		
 	}
 	
 	
 	
 	@POST
-	@Path("nuevoVehiculo")
+	@Path("nuevovehiculo")
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Response save(Vehiculo vehiculo) {

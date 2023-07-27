@@ -17,7 +17,7 @@ public class GestionTarifa {
 		if (tarifa.getTipoTarifa().equals("")) {
 			throw new Exception("Tipo de tarifa vacio !");
 		} else {
-			System.out.println("Se inserta nueva tarifa.");
+			System.out.println("Se crea nueva tarifa.");
 			try {
 				this.tarifaDAO.create(tarifa);
 			} catch (Exception e) {

@@ -16,16 +16,16 @@ public class GestionTicket {
 	
 	public void save( Ticket ticket) throws Exception {
 		
-		if (ticket.getId() == 0 ) {
-			throw new Exception("Ticket no existe !");
+		if (ticket.getId() == 0) {
+			throw new Exception("Ticket vacio !");
 		} else {
-			System.out.println("Se inserta nuevo Ticket.");
-			
+			System.out.println("Se crea nuevo Ticket.");
+
 			try {
-				
-				this.ticketDAO.insert(ticket);
+
+				this.ticketDAO.create(ticket);
 			} catch (Exception e) {
-				throw new Exception("Error al insertar nueva Tarifa: "+e.getMessage());
+				throw new Exception("Error al insertar nueva Ticket: " + e.getMessage());
 			}
 		}
 	}
@@ -38,7 +38,7 @@ public class GestionTicket {
 		try {
 			return ticketDAO.getAll();
 		} catch (Exception e) {
-			throw new Exception("Error al recuperar Tarifas de la base de datos: "+e.getMessage());
+			throw new Exception("Error al recuperar Tickets de la base de datos: "+e.getMessage());
 			
 		}
 		

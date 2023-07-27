@@ -15,8 +15,6 @@ public class FacturaService {
 	@Inject
 	private GestionFactura gestionFactura;
 
-	
-	
 	@GET
 	@Path("facturas")
 	@Produces("application/json")

@@ -22,6 +22,20 @@ public class TarifaDAO implements Serializable{
 		em.persist(tarifa);
 	}
 	
+	public void update(Tarifa tarifa) throws Exception{
+		em.merge(tarifa);
+	}
+	
+	public Tarifa getById(int id) throws Exception{
+		Tarifa tarifa = em.find(Tarifa.class, id);
+		return tarifa;
+	}
+	
+	public void delete(int id) throws Exception{
+		Tarifa tarifa = em.find(Tarifa.class, id);
+		em.remove(tarifa);
+	}
+	
 	public List<Tarifa> getAll() throws Exception {
 		String jpql = "SELECT t FROM Tarifa t";
 		Query query = em.createQuery(jpql);

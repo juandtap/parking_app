@@ -22,25 +22,25 @@ public class FacturaDAO implements Serializable {
 	
 	
 	
-	public void insert(Factura factura) {
+	public void create(Factura factura) throws Exception{
 		em.persist(factura);
 	}
 	
-	public void update(Factura factura) {
+	public void update(Factura factura) throws Exception{
 		em.merge(factura);
 	}
 	
-	public Factura getById(int id) {
+	public Factura getById(int id) throws Exception {
 		Factura f = em.find(Factura.class,id);
 		return f;
 	}
 	
-	public void delete(int id) {
+	public void delete(int id) throws Exception{
 		Factura f = em.find(Factura.class,id);
 		em.remove(f);
 	}
 	
-	public List<Factura> getAll(){
+	public List<Factura> getAll() throws Exception{
 		String jpql = "SELECT f FROM Factura f";
 		Query q = em.createQuery(jpql);
 		return q.getResultList();

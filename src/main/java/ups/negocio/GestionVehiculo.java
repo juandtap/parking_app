@@ -17,15 +17,15 @@ public class GestionVehiculo {
 	public void save (Vehiculo vehiculo)throws Exception{
 		
 		if (vehiculo.getPlaca().equals("")) {
-			throw new Exception("Vehiculo no existe..!");
+			throw new Exception("Vehiculo sin placa!");
 		} else {
-			System.out.println("Se inserta nuevo Vehiculo.");
+			System.out.println("Se crea nuevo Vehiculo.");
 			
 			try {
-				this.vehiculoDAO.insert(vehiculo);
+				this.vehiculoDAO.create(vehiculo);
 			} catch (Exception e) {
-				// TODO: handle exception
-				throw new Exception("Error al insertar nueva Vehiculo: "+e.getMessage());
+				
+				throw new Exception("Error al insertar nuevo Vehiculo: "+e.getMessage());
 			}
 
 		}
@@ -38,7 +38,7 @@ public class GestionVehiculo {
 		try {
 			return vehiculoDAO.getAll();
 		} catch (Exception e) {
-			throw new Exception("Error al recuperar Tarifas de la base de datos: "+e.getMessage());
+			throw new Exception("Error al recuperar Vehiculos de la base de datos: "+e.getMessage());
 			
 		}
 		

@@ -17,26 +17,26 @@ public class VehiculoDAO  implements Serializable{
 	@PersistenceContext
 	private EntityManager em;
 	
-	public void insert(Vehiculo vehiculo) {
+	public void create(Vehiculo vehiculo) throws Exception{
 		em.persist(vehiculo);
 	}
 	
-	public void update(Vehiculo vehiculo) {
+	public void update(Vehiculo vehiculo) throws Exception{
 		em.merge(vehiculo);
 	}
 	
 	
-	public Vehiculo getById(String placa) {
+	public Vehiculo getById(String placa) throws Exception{
 		Vehiculo v = em.find(Vehiculo.class,placa);
 		return v;
 	}
 	
-	public void delete(String placa) {
+	public void delete(String placa) throws Exception{
 		Vehiculo v = em.find(Vehiculo.class,placa);
 		em.remove(v);
 	}
 	
-	public List<Vehiculo> getAll(){
+	public List<Vehiculo> getAll() throws Exception{
 		String jpql = "SELECT v FROM Vehiculo v";
 		Query q = em.createQuery(jpql);
 		return q.getResultList();

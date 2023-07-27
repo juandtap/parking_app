@@ -18,15 +18,14 @@ public class GestionFactura {
 	
 	public void save(Factura factura) throws Exception{
 		if (factura.getId()==0) {
-			throw new Exception("Factura no existe !");
+			throw new Exception("Factura vacia !");
 			
 		} else {
 
 			System.out.println("Se crea una nueva Factura.");
-			
-			
+
 			try {
-				this.facturaDAO.insert(factura);
+				this.facturaDAO.create(factura);
 			} catch (Exception e) {
 				throw new Exception("Error al insertar nueva Factura: "+e.getMessage());
 			}
@@ -43,7 +42,7 @@ public class GestionFactura {
 		try {
 			return facturaDAO.getAll();
 		} catch (Exception e) {
-			throw new Exception("Error al recuperar Tarifas de la base de datos: "+e.getMessage());
+			throw new Exception("Error al recuperar Facturas de la base de datos: "+e.getMessage());
 			
 		}
 		

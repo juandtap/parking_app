@@ -22,7 +22,12 @@ public class TarifaService {
 	@Path("tarifas")
 	@Produces("application/json")
 	public List<Tarifa> getAll() throws Exception{
-		return this.gestionTarifa.getAll();
+		try {
+			return this.gestionTarifa.getAll();
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		
 	}
 	
 	@POST
