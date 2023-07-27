@@ -12,6 +12,8 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 import ups.modelo.Tarifa;
 import ups.negocio.GestionTarifa;
+import ups.utils.Codigos;
+import ups.utils.Mensajes;
 
 @Path("parking")
 public class TarifaService {
@@ -44,8 +46,8 @@ public class TarifaService {
 		} catch (Exception e) {
 			System.out.println("Error en servicio POST: "+e.getMessage());
 			var error = new Error();
-			error.setCodigo(91);
-			error.setMensaje("Error al crear Tarifa: "+e.getMessage());
+			error.setCodigo(Codigos.ERROR_POST_CODE);
+			error.setMensaje(Mensajes.ERROR_POST_MESSAGE+": "+e.getMessage());
 			return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
 		}
 		
@@ -63,8 +65,8 @@ public class TarifaService {
 			Tarifa tarifaToEdit = this.gestionTarifa.findById(tarifa.getId());
 			if (tarifaToEdit == null) {
 				var error = new Error();
-				error.setCodigo(90);
-				error.setMensaje("Id de objeto no existe: ");
+				error.setCodigo(Codigos.ERROR_NOT_FOUND_CODE);
+				error.setMensaje(Mensajes.ERROR_NOT_FOUND_MESSAGE);
 				return Response.status(Response.Status.NOT_FOUND).entity(error).build();
 			}
 			
@@ -83,8 +85,8 @@ public class TarifaService {
 			
 			System.out.println("Error en servicio PUT: " + e.getMessage());
 	        var error = new Error();
-	        error.setCodigo(92);
-	        error.setMensaje("Error al actualizar la tarifa: " + e.getMessage());
+	        error.setCodigo(Codigos.ERROR_PUT_CODE);
+	        error.setMensaje(Mensajes.ERROR_PUT_MESSAGE+": " + e.getMessage());
 	        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
 			
 		}
