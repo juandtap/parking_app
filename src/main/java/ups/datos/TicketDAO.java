@@ -14,33 +14,31 @@ import ups.modelo.Ticket;
 @Stateless
 public class TicketDAO  implements Serializable{
 	
-	
 	private static final long serialVersionUID = 1L;
-	
 	
 	@PersistenceContext
 	private EntityManager em;
  
 	
-	public void create(Ticket ticket) throws Exception{
+	public void create(Ticket ticket) {
 		em.persist(ticket);
 	}
 	
-	public void update(Ticket ticket) throws Exception{
+	public void update(Ticket ticket){
 		em.merge(ticket);
 	}
 	
-	public Ticket getById(int id) throws Exception{
+	public Ticket getById(int id) {
 		Ticket t = em.find(Ticket.class,id);
 		return t;
 	}
 	
-	public void delete(int id) throws Exception{
+	public void delete(int id) {
 		Ticket t = em.find(Ticket.class,id);
 		em.remove(t);
 	}
 	
-	public List<Ticket> getAll() throws Exception{
+	public List<Ticket> getAll(){
 		String jpql = "SELECT t FROM Ticket t";
 		Query q = em.createQuery(jpql);
 		return q.getResultList();

@@ -25,7 +25,7 @@ public class GestionTicket {
 
 				this.ticketDAO.create(ticket);
 			} catch (Exception e) {
-				throw new Exception("Error al insertar nueva Ticket: " + e.getMessage());
+				throw new Exception("Error al crear nuevo Ticket: " + e.getMessage());
 			}
 		}
 	}

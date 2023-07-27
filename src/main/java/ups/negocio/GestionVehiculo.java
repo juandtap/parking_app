@@ -25,7 +25,7 @@ public class GestionVehiculo {
 				this.vehiculoDAO.create(vehiculo);
 			} catch (Exception e) {
 				
-				throw new Exception("Error al insertar nuevo Vehiculo: "+e.getMessage());
+				throw new Exception("Error al crear nuevo Vehiculo: "+e.getMessage());
 			}
 
 		}

@@ -18,25 +18,25 @@ public class TarifaDAO implements Serializable{
 	@PersistenceContext
 	EntityManager em;
 	
-	public void create(Tarifa tarifa) throws Exception{
+	public void create(Tarifa tarifa){
 		em.persist(tarifa);
 	}
 	
-	public void update(Tarifa tarifa) throws Exception{
+	public void update(Tarifa tarifa){
 		em.merge(tarifa);
 	}
 	
-	public Tarifa getById(int id) throws Exception{
+	public Tarifa getById(int id) {
 		Tarifa tarifa = em.find(Tarifa.class, id);
 		return tarifa;
 	}
 	
-	public void delete(int id) throws Exception{
+	public void delete(int id) {
 		Tarifa tarifa = em.find(Tarifa.class, id);
 		em.remove(tarifa);
 	}
 	
-	public List<Tarifa> getAll() throws Exception {
+	public List<Tarifa> getAll()  {
 		String jpql = "SELECT t FROM Tarifa t";
 		Query query = em.createQuery(jpql);
 		return query.getResultList();

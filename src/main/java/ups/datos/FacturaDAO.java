@@ -20,27 +20,25 @@ public class FacturaDAO implements Serializable {
 	private EntityManager em;
 	
 	
-	
-	
-	public void create(Factura factura) throws Exception{
+	public void create(Factura factura) {
 		em.persist(factura);
 	}
 	
-	public void update(Factura factura) throws Exception{
+	public void update(Factura factura) {
 		em.merge(factura);
 	}
 	
-	public Factura getById(int id) throws Exception {
+	public Factura getById(int id)  {
 		Factura f = em.find(Factura.class,id);
 		return f;
 	}
 	
-	public void delete(int id) throws Exception{
+	public void delete(int id) {
 		Factura f = em.find(Factura.class,id);
 		em.remove(f);
 	}
 	
-	public List<Factura> getAll() throws Exception{
+	public List<Factura> getAll() {
 		String jpql = "SELECT f FROM Factura f";
 		Query q = em.createQuery(jpql);
 		return q.getResultList();

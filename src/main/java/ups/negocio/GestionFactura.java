@@ -27,7 +27,7 @@ public class GestionFactura {
 			try {
 				this.facturaDAO.create(factura);
 			} catch (Exception e) {
-				throw new Exception("Error al insertar nueva Factura: "+e.getMessage());
+				throw new Exception("Error al crear nueva Factura: "+e.getMessage());
 			}
 		}
 		
@@ -48,6 +48,18 @@ public class GestionFactura {
 		
 		
 		
+	}
+	
+	
+	// Método para generar el numero de factura a partir del id(int)
+	private String generateFacNumber(int id) {
+		// Definimos el formato de la factura con ceros a la izquierda (6)
+		String formatFac = "%06d";
+		// Usamos String.format para generar el número de factura en el formato 
+		// 000001
+		String facNumber = String.format(formatFac, id);
+		
+		return facNumber;
 	}
 	
 	

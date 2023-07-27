@@ -43,7 +43,7 @@ public class TarifaService {
 			System.out.println("Error en servicio POST: "+e.getMessage());
 			var error = new Error();
 			error.setCodigo(91);
-			error.setMensaje(e.getMessage());
+			error.setMensaje("Error al crear Tarifa: "+e.getMessage());
 			return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
 		}
 		
