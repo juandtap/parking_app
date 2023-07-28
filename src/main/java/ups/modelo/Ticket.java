@@ -1,6 +1,7 @@
 package ups.modelo;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -25,6 +26,8 @@ public class Ticket {
 	private LocalDateTime horaEntrada;
 	
 	private LocalDateTime horaSalida;
+	
+	private LocalTime tiempoParqueo;
 	
 	@ManyToOne(cascade = CascadeType.ALL ,  fetch = FetchType.EAGER)
 	@JoinColumn(name="placa_vehiculo")
@@ -97,10 +100,26 @@ public class Ticket {
 
 
 
+	
+
+
+
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", vehiculo="
-				+ vehiculo + "]";
+		return "Ticket [id=" + id + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", tiempoParqueo="
+				+ tiempoParqueo + ", vehiculo=" + vehiculo + "]";
+	}
+
+
+
+	public LocalTime getTiempoParqueo() {
+		return tiempoParqueo;
+	}
+
+
+
+	public void setTiempoParqueo(LocalTime tiempoParqueo) {
+		this.tiempoParqueo = tiempoParqueo;
 	}
 	
 	

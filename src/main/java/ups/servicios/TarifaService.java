@@ -72,7 +72,7 @@ public class TarifaService {
 			
 			System.out.println("Id tarifa encontrado");
 			
-			tarifaToEdit.setTipoTarifa(tarifa.getTipoTarifa());
+			tarifaToEdit.setTarifa(tarifa.getTarifa());
 			tarifaToEdit.setPrecioHora(tarifa.getPrecioHora());
 			tarifaToEdit.setDescripcion(tarifa.getDescripcion());
 			

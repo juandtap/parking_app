@@ -15,11 +15,12 @@ public class Tarifa {
 	private int id;
 	
 	@Column(nullable = false)
-	private String tipoTarifa;
+	private String tarifa;
 	
 	@Column(nullable = false)
 	private float precioHora;
 	
+	private int fraccionHora;
 	
 	private String descripcion;
 	
@@ -32,7 +33,7 @@ public class Tarifa {
 
 
 	public Tarifa(String tipoTarifa, float precioHora, String descripcion) {
-		this.tipoTarifa = tipoTarifa;
+		this.tarifa = tipoTarifa;
 		this.precioHora = precioHora;
 		this.descripcion = descripcion;
 	}
@@ -50,13 +51,13 @@ public class Tarifa {
 	}
 
 
-	public String getTipoTarifa() {
-		return tipoTarifa;
+	public String getTarifa() {
+		return tarifa;
 	}
 
 
-	public void setTipoTarifa(String tipoTarifa) {
-		this.tipoTarifa = tipoTarifa;
+	public void setTarifa(String tarifa) {
+		this.tarifa = tarifa;
 	}
 
 
@@ -80,13 +81,30 @@ public class Tarifa {
 	}
 
 
+	public int getFraccionHora() {
+		return fraccionHora;
+	}
+
+
+	public void setFraccionHora(int fraccionHora) {
+		this.fraccionHora = fraccionHora;
+	}
+
+
 
 
 	@Override
 	public String toString() {
-		return "Tarifa [id=" + id + ", tipoTarifa=" + tipoTarifa + ", precioHora=" + precioHora + ", descripcion="
-				+ descripcion + "]";
+		return "Tarifa [id=" + id + ", tarifa=" + tarifa + ", precioHora=" + precioHora + ", fraccionHora="
+				+ fraccionHora + ", descripcion=" + descripcion + "]";
 	}
+
+	
+	
+
+
+
+
 	
 	
 	
