@@ -2,7 +2,7 @@ package ups.modelo;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Factura {
@@ -25,20 +26,20 @@ public class Factura {
 	
 	private LocalDate fecha;
 	
-	private float precio;
+	private float total;
 	
-	@ManyToOne(cascade = CascadeType.ALL ,  fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_ticket")
 	private Ticket ticket;
 	
-	@ManyToOne(cascade = CascadeType.ALL ,  fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_tarifa")
 	private Tarifa tarifa;
 	
 	
 	
 	public Factura() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 
@@ -66,12 +67,12 @@ public class Factura {
 		this.fecha = fecha;
 	}
 
-	public float getPrecio() {
-		return precio;
+	public float getTotal() {
+		return total;
 	}
 
-	public void setPrecio(float precio) {
-		this.precio = precio;
+	public void setTotal(float total) {
+		this.total = total;
 	}
 
 	public Ticket getTicket() {
@@ -93,7 +94,7 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [id=" + id + ", numero=" + numero + ", fecha=" + fecha + ", precio=" + precio + ", ticket="
+		return "Factura [id=" + id + ", numero=" + numero + ", fecha=" + fecha + ", total=" + total + ", ticket="
 				+ ticket + ", tarifa=" + tarifa + "]";
 	}
 	

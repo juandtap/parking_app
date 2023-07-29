@@ -3,7 +3,7 @@ package ups.modelo;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,14 +29,14 @@ public class Ticket {
 	
 	private LocalTime tiempoParqueo;
 	
-	@ManyToOne(cascade = CascadeType.ALL ,  fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="placa_vehiculo")
 	private Vehiculo vehiculo;
 	
 	
 	
 	public Ticket() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	
