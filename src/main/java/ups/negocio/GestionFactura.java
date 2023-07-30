@@ -9,6 +9,7 @@ import ups.datos.FacturaDAO;
 import ups.modelo.Factura;
 
 
+
 @Stateless
 public class GestionFactura {
 	
@@ -30,11 +31,7 @@ public class GestionFactura {
 				throw new Exception("Error al crear nueva Factura: "+e.getMessage());
 			}
 		}
-		
-		
-		
-		
-		
+	
 	}
 	
 	public List<Factura> getAll()  throws Exception{
@@ -45,11 +42,41 @@ public class GestionFactura {
 			throw new Exception("Error al recuperar Facturas de la base de datos: "+e.getMessage());
 			
 		}
+
+	}
+	
+	public void update(Factura factura) throws Exception{
+		
+		System.out.println("Se actualiza factura.");
+		try {
+			this.facturaDAO.update(factura);
+		} catch (Exception e) {
+			throw new Exception("Error al actualizar factura: "+e.getMessage());
+		}
 		
 		
 		
 	}
 	
+	
+	public Factura findById(int id) throws Exception{
+		System.out.println("Se busca factura: "+id);
+		try {
+			return this.facturaDAO.getById(id);
+		} catch (Exception e) {
+			throw new Exception("Error al encontrar factura: "+id+", "+e.getMessage());
+		}
+	}
+	
+	public void delete(int id) throws Exception{
+		System.out.println("Se elimina vehiculo: "+id);
+		try {
+			this.facturaDAO.delete(id);
+		} catch (Exception e) {
+			throw new Exception("Error al eliminar vehiculo: "+id+", "+e.getMessage());
+			
+		}
+	}
 	
 	// Método para generar el numero de factura a partir del id(int)
 	private String generateFacNumber(int id) {
