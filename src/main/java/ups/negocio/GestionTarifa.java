@@ -63,4 +63,15 @@ public class GestionTarifa {
 		
 		
 	}
+	
+	public void eliminar(int id )throws Exception {
+		
+		try {
+		this.tarifaDAO.delete(id);
+			
+		} catch (Exception e) {
+			throw new Exception("Error al eliminar tarifa: "+id+", "+e.getMessage());
+		}
+		
+	}
 }
