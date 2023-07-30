@@ -46,7 +46,7 @@ public class GestionVehiculo {
 	
 	public void update(Vehiculo vehiculo) throws Exception{
 		
-		System.out.println("Se actualiza la tarifa.");
+		System.out.println("Se actualiza vehiculo.");
 		try {
 			this.vehiculoDAO.update(vehiculo);
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class GestionVehiculo {
 	
 	
 	public Vehiculo findById(String placa) throws Exception{
-		System.out.println("Se actualiza vehiculo: "+placa);
+		System.out.println("Se busca vehiculo: "+placa);
 		try {
 			return this.vehiculoDAO.getById(placa);
 		} catch (Exception e) {

@@ -78,6 +78,7 @@ public class TarifaService {
 			tarifaToEdit.setPrecioHora(tarifa.getPrecioHora());
 			tarifaToEdit.setDescripcion(tarifa.getDescripcion());
 			tarifaToEdit.setFraccionHora(tarifa.getFraccionHora());
+			
 			this.gestionTarifa.update(tarifaToEdit);
 
 			return Response.status(Response.Status.OK).entity(tarifaToEdit).build();

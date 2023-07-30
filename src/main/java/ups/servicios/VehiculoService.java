@@ -67,7 +67,7 @@ public class VehiculoService {
 	public Response save(Vehiculo vehiculo) {
 		System.out.println("Servicio POST: "+vehiculo.toString());
 		try {
-			gestionVehiculo.save(vehiculo);
+			this.gestionVehiculo.save(vehiculo);
 			return Response.status(Response.Status.OK).entity(vehiculo).build();
 			
 		} catch (Exception e) {
@@ -105,7 +105,9 @@ public class VehiculoService {
 			vehiculoToEdit.setCedula(vehiculo.getCedula());
 			vehiculoToEdit.setNombre(vehiculo.getNombre());
 			
-			return Response.status(Response.Status.NOT_FOUND).entity(vehiculoToEdit).build();
+			this.gestionVehiculo.update(vehiculoToEdit);
+			
+			return Response.status(Response.Status.OK).entity(vehiculoToEdit).build();
 			
 			
 		} catch (Exception e) {

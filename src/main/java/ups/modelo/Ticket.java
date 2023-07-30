@@ -33,12 +33,10 @@ public class Ticket {
 	@JoinColumn(name="placa_vehiculo")
 	private Vehiculo vehiculo;
 	
-	
-	
+		
 	public Ticket() {
 		
 	}
-	
 	
 	
 	public Ticket(LocalDateTime horaEntrada, LocalDateTime horaSalida, Vehiculo vehiculo) {
@@ -46,10 +44,6 @@ public class Ticket {
 		this.horaSalida = horaSalida;
 		this.vehiculo = vehiculo;
 	}
-
-
-
-
 
 
 	public int getId() {
@@ -99,11 +93,6 @@ public class Ticket {
 	}
 
 
-
-	
-
-
-
 	@Override
 	public String toString() {
 		return "Ticket [id=" + id + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", tiempoParqueo="
@@ -122,13 +111,6 @@ public class Ticket {
 		this.tiempoParqueo = tiempoParqueo;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }

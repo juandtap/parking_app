@@ -42,8 +42,44 @@ public class GestionTicket {
 			
 		}
 		
+	}
+	
+	public void update(Ticket ticket) throws Exception{
+		
+		System.out.println("Se actualiza  ticket.");
+		try {
+			this.ticketDAO.update(ticket);
+		} catch (Exception e) {
+			throw new Exception("Error al actualizar ticket: "+e.getMessage());
+		}
+		
 		
 		
 	}
+	
+	
+	public Ticket findById(int id) throws Exception{
+		System.out.println("Se busca ticket: "+id);
+		try {
+			return this.ticketDAO.getById(id);
+		} catch (Exception e) {
+			throw new Exception("Error al encontrar ticket: "+id+", "+e.getMessage());
+		}
+	}
+	
+	public void delete(int id) throws Exception{
+		System.out.println("Se elimina ticket: "+id);
+		try {
+			this.ticketDAO.delete(id);
+		} catch (Exception e) {
+			throw new Exception("Error al eliminar ticket: "+id+", "+e.getMessage());
+			
+		}
+	}
+	
+	
+	
+	
+	
 
 }
