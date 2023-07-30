@@ -62,8 +62,8 @@ public class TarifaService {
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Response update(Tarifa tarifa) {
-		 System.out.println("Servicio PUT: " + tarifa.toString());
-		 try {
+		System.out.println("Servicio PUT: " + tarifa.toString());
+		try {
 			Tarifa tarifaToEdit = this.gestionTarifa.findById(tarifa.getId());
 			if (tarifaToEdit == null) {
 				var error = new Error();
@@ -71,26 +71,25 @@ public class TarifaService {
 				error.setMensaje(Mensajes.ERROR_NOT_FOUND_MESSAGE);
 				return Response.status(Response.Status.NOT_FOUND).entity(error).build();
 			}
-			
+
 			System.out.println("Id tarifa encontrado");
-			
+
 			tarifaToEdit.setTarifa(tarifa.getTarifa());
 			tarifaToEdit.setPrecioHora(tarifa.getPrecioHora());
 			tarifaToEdit.setDescripcion(tarifa.getDescripcion());
 			tarifaToEdit.setFraccionHora(tarifa.getFraccionHora());
 			this.gestionTarifa.update(tarifaToEdit);
-			
+
 			return Response.status(Response.Status.OK).entity(tarifaToEdit).build();
-			
-			
+
 		} catch (Exception e) {
-			
+
 			System.out.println("Error en servicio PUT: " + e.getMessage());
-	        var error = new Error();
-	        error.setCodigo(Codigos.ERROR_PUT_CODE);
-	        error.setMensaje(Mensajes.ERROR_PUT_MESSAGE+": " + e.getMessage());
-	        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
-			
+			var error = new Error();
+			error.setCodigo(Codigos.ERROR_PUT_CODE);
+			error.setMensaje(Mensajes.ERROR_PUT_MESSAGE + ": " + e.getMessage());
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
+
 		}
 	}
 	
@@ -100,7 +99,7 @@ public class TarifaService {
 	public Response delete(@PathParam("id") int id) {
 		
 		try {
-			this.gestionTarifa.eliminar(id);
+			this.gestionTarifa.delete(id);
 			return Response.status(Response.Status.OK).build();
 			
 		} catch (Exception e) {

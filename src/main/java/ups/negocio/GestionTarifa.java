@@ -55,6 +55,7 @@ public class GestionTarifa {
 	}
 	
 	public Tarifa findById(int id) throws Exception{
+		System.out.println("Se busca tarifa "+id);
 		try {
 			return this.tarifaDAO.getById(id);
 		} catch (Exception e) {
@@ -64,8 +65,8 @@ public class GestionTarifa {
 		
 	}
 	
-	public void eliminar(int id )throws Exception {
-		
+	public void delete(int id )throws Exception {
+		System.out.println("Se elimina tarifa: "+id);
 		try {
 		this.tarifaDAO.delete(id);
 			
