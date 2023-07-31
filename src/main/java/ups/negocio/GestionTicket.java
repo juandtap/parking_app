@@ -1,5 +1,6 @@
 package ups.negocio;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.ejb.Stateless;
@@ -16,12 +17,15 @@ public class GestionTicket {
 	
 	public void save( Ticket ticket) throws Exception {
 		
-		if (ticket.getId() == 0) {
+		if (ticket == null) {
 			throw new Exception("Ticket vacio !");
 		} else {
 			System.out.println("Se crea nuevo Ticket.");
 
 			try {
+				
+				ticket.setEstadoSalida(false);
+				ticket.setHoraEntrada(getHoraEntrada());
 
 				this.ticketDAO.create(ticket);
 			} catch (Exception e) {
@@ -78,7 +82,9 @@ public class GestionTicket {
 	}
 	
 	
-	
+	public LocalDateTime getHoraEntrada() {
+		return LocalDateTime.now();
+	}
 	
 	
 

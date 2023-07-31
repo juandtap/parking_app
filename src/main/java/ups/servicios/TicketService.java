@@ -100,9 +100,7 @@ public class TicketService {
 			
 			ticketToEdit.setId(ticket.getId());
 			ticketToEdit.setVehiculo(ticket.getVehiculo());
-			ticketToEdit.setHoraEntrada(ticket.getHoraEntrada());
-			ticketToEdit.setHoraSalida(ticket.getHoraSalida());
-			ticketToEdit.setTiempoParqueo(ticket.getTiempoParqueo());
+			ticketToEdit.setEstadoSalida(ticket.isEstadoSalida());
 			
 			this.gestionTicket.update(ticketToEdit);
 			

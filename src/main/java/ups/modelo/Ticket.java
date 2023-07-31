@@ -3,7 +3,7 @@ package ups.modelo;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,7 +29,9 @@ public class Ticket {
 	
 	private LocalTime tiempoParqueo;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	private boolean estadoSalida;
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
 	@JoinColumn(name="placa_vehiculo")
 	private Vehiculo vehiculo;
 	
@@ -93,14 +95,6 @@ public class Ticket {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Ticket [id=" + id + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", tiempoParqueo="
-				+ tiempoParqueo + ", vehiculo=" + vehiculo + "]";
-	}
-
-
-
 	public LocalTime getTiempoParqueo() {
 		return tiempoParqueo;
 	}
@@ -110,7 +104,25 @@ public class Ticket {
 	public void setTiempoParqueo(LocalTime tiempoParqueo) {
 		this.tiempoParqueo = tiempoParqueo;
 	}
-	
 
+
+	public boolean isEstadoSalida() {
+		return estadoSalida;
+	}
+
+
+	public void setEstadoSalida(boolean estadoSalida) {
+		this.estadoSalida = estadoSalida;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Ticket [id=" + id + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", tiempoParqueo="
+				+ tiempoParqueo + ", estadoSalida=" + estadoSalida + ", vehiculo=" + vehiculo + "]";
+	}
+	
+	
+	
 	
 }
