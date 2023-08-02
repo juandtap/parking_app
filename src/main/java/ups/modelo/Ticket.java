@@ -1,7 +1,8 @@
 package ups.modelo;
 
+
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -27,7 +28,8 @@ public class Ticket {
 	
 	private LocalDateTime horaSalida;
 	
-	private LocalTime tiempoParqueo;
+	//tiempo en minutos
+	private int tiempoParqueo;
 	
 	private boolean estadoSalida;
 	
@@ -95,13 +97,13 @@ public class Ticket {
 	}
 
 
-	public LocalTime getTiempoParqueo() {
+	public int getTiempoParqueo() {
 		return tiempoParqueo;
 	}
 
 
 
-	public void setTiempoParqueo(LocalTime tiempoParqueo) {
+	public void setTiempoParqueo(int tiempoParqueo) {
 		this.tiempoParqueo = tiempoParqueo;
 	}
 

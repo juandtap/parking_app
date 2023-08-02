@@ -80,6 +80,7 @@ public class TicketService {
 		
 	}
 	
+	
 	@PUT
 	@Path("actualizarticket")
 	@Produces("application/json")
@@ -98,11 +99,46 @@ public class TicketService {
 			
 			System.out.println("Id ticket encontrado");
 			
-			ticketToEdit.setId(ticket.getId());
-			ticketToEdit.setVehiculo(ticket.getVehiculo());
-			ticketToEdit.setEstadoSalida(ticket.isEstadoSalida());
+			// la hora y el tiempo se actualizan en GestionTicket
+			
 			
 			this.gestionTicket.update(ticketToEdit);
+			
+			
+			return Response.status(Response.Status.OK).entity(ticketToEdit).build();
+			
+			
+		} catch (Exception e) {
+			System.out.println("Error en servicio PUT: " + e.getMessage());
+	        var error = new Error();
+	        error.setCodigo(Codigos.ERROR_PUT_CODE);
+	        error.setMensaje(Mensajes.ERROR_PUT_MESSAGE+": " + e.getMessage());
+	        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
+		}
+	}
+	
+	@PUT
+	@Path("actualizardatoscliente")
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response updateDataClient(Ticket ticket) {
+		System.out.println("Servicio PUT: "+ticket.toString());
+		try {
+			Ticket ticketToEdit = this.gestionTicket.findById(ticket.getId());
+			if (ticketToEdit == null) {
+				var error = new Error()	;
+				error.setCodigo(Codigos.ERROR_NOT_FOUND_CODE);
+				error.setMensaje(Mensajes.ERROR_NOT_FOUND_MESSAGE);
+				return Response.status(Response.Status.NOT_FOUND).entity(error).build();	
+				
+			}
+			
+			System.out.println("Id ticket encontrado");
+			
+			ticketToEdit.setVehiculo(ticket.getVehiculo());
+			
+			
+			this.gestionTicket.updateDataClient(ticketToEdit);
 			
 			
 			return Response.status(Response.Status.OK).entity(ticketToEdit).build();
