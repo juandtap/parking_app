@@ -1,5 +1,7 @@
 package ups.negocio;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -18,7 +20,7 @@ public class GestionFactura {
 	
 	
 	public void save(Factura factura) throws Exception{
-		if (factura.getId()==0) {
+		if (factura == null) {
 			throw new Exception("Factura vacia !");
 			
 		} else {
@@ -26,6 +28,7 @@ public class GestionFactura {
 			System.out.println("Se crea una nueva Factura.");
 
 			try {
+				factura.setFecha(this.getFechaFacturacion());
 				this.facturaDAO.create(factura);
 			} catch (Exception e) {
 				throw new Exception("Error al crear nueva Factura: "+e.getMessage());
@@ -87,6 +90,10 @@ public class GestionFactura {
 		String facNumber = String.format(formatFac, id);
 		
 		return facNumber;
+	}
+	
+	private LocalDate getFechaFacturacion() {
+		return LocalDate.now();
 	}
 	
 	

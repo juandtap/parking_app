@@ -5,7 +5,7 @@ import jakarta.inject.Inject;
 
 // Clase para realizar las acciones en mas de una entidad
 // haciendo solo una llamada a un servicio
-// pendiente su uso
+// No se usa actualmente
 
 @Stateless
 public class Parqueadero {
