@@ -52,6 +52,7 @@ public class GestionFactura {
 		
 		System.out.println("Se actualiza factura.");
 		try {
+			factura.setNumero(this.generateFacNumber(factura.getId()));
 			this.facturaDAO.update(factura);
 		} catch (Exception e) {
 			throw new Exception("Error al actualizar factura: "+e.getMessage());

@@ -96,10 +96,7 @@ public class FacturaService {
 			
 			System.out.println("id factura encontrada");
 			
-			facturaToEdit.setFecha(factura.getFecha());
-			facturaToEdit.setTotal(factura.getTotal());
-			facturaToEdit.setTarifa(factura.getTarifa());
-			facturaToEdit.setTicket(factura.getTicket());
+			
 			
 			this.gestionFactura.update(facturaToEdit);
 			
