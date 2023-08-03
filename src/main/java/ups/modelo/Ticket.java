@@ -33,7 +33,7 @@ public class Ticket {
 	
 	private boolean estadoSalida;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="placa_vehiculo")
 	private Vehiculo vehiculo;
 	

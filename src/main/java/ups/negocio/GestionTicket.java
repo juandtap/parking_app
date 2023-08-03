@@ -56,6 +56,7 @@ public class GestionTicket {
 		System.out.println("Se actualiza ticket con la hora de Salida, tiempo de parqueo y estado");
 		try {
 			// 
+			
 			ticket.setHoraSalida(this.getHoraEntradaSalida());
 			ticket.setTiempoParqueo(this.getTiempoParqueo(ticket.getHoraEntrada(), ticket.getHoraSalida()));
 			ticket.setEstadoSalida(true);
